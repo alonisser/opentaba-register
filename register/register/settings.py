@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import datetime
+
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 LOGIN_URL = '/'
@@ -40,7 +42,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'readfeed_app',
+    'feedme',
+    'djcelery',
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -90,3 +95,13 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
     )
 
+# Celery config
+
+BROKER_URL = 'redis://localhost:6379/0'
+FEED_UPDATE_CELERY = True
+CELERYBEAT_SCHEDULE = {
+    "feed-updates": {
+      "task":"update_all_feeds",
+      "schedule":datetime.timedelta(hours=1),
+      }
+    }
