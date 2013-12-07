@@ -44,7 +44,9 @@ INSTALLED_APPS = (
     'readfeed_app',
     'feedme',
     'djcelery',
-)
+    'django.contrib.admin',
+    )
+  
 
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +107,4 @@ CELERYBEAT_SCHEDULE = {
       "schedule":datetime.timedelta(hours=1),
       }
     }
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
