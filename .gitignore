@@ -1,4 +1,6 @@
 *.log
+*.swp
 *.pot
 *.pyc
 local_settings.py
+*.SWP
