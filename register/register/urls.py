@@ -25,5 +25,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^feeds/', include('feedme.urls'))
+    url(r'^feeds/', include('planet.urls'))
 )

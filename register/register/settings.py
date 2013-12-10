@@ -30,7 +30,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID = 1
+PLANET = { "USER_AGENT": "OpenTaba"}
+print(PLANET)
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,11 +42,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'pagination',
+    'tagging',
     'south',
     'readfeed_app',
-    'feedme',
+#    'feedme', #doesn't really work
     'djcelery',
     'django.contrib.admin',
+    'planet'
     )
   
 
@@ -100,11 +106,15 @@ TEMPLATE_DIRS = (
 # Celery config
 
 BROKER_URL = 'redis://localhost:6379/0'
-FEED_UPDATE_CELERY = True
+#FEED_UPDATE_CELERY = True
 CELERYBEAT_SCHEDULE = {
-    "feed-updates": {
-      "task":"update_all_feeds",
-      "schedule":datetime.timedelta(hours=1),
-      }
+    #"feed-updates": {
+    #  "task":"update_all_feeds",
+    #  "schedule":datetime.timedelta(hours=1),
+    #  }
     }
+
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+
+#planet config
+
