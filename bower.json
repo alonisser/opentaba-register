@@ -1,0 +1,26 @@
+{
+  "name": "opentaba-mail",
+  "version": "0.0.1",
+  "homepage": "opentaba.info",
+  "authors": [
+    "alonisser@gmail.com"
+  ],
+  "description": "a mailserver for opentaba",
+  "main": "register/manage.py",
+  "keywords": [
+    "opentaba"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "register/register/static/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "jquery": "~2.0.3"
+  }
+}
