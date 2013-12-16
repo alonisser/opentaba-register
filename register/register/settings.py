@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 PLANET = { "USER_AGENT": "OpenTaba"}
-print(PLANET)
 # Application definition
 
 INSTALLED_APPS = (
@@ -118,3 +117,5 @@ CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 
 #planet config
 
+LANGUAGE_COOKIE_NAME = "planetlng"
+SESSION_COOKIE_NAME = "planetid"
