@@ -49,11 +49,10 @@ INSTALLED_APPS = (
 #    'feedme', #doesn't really work
     'djcelery',
     'django.contrib.admin',
+    'pinax_theme_bootstrap',
     'planet'
     )
   
-
-
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,6 +60,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination.middleware.PaginationMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'planet.context_processors.context',
 )
 
 ROOT_URLCONF = 'register.urls'
@@ -101,7 +113,9 @@ STATIC_URL = '/static/' #what url is used to access static
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
     )
-
+AUTHENTICATION_BACKENDS = ( 
+    
+    'django.contrib.auth.backends.ModelBackend',)
 # Celery config
 
 BROKER_URL = 'redis://localhost:6379/0'
@@ -112,6 +126,12 @@ CELERYBEAT_SCHEDULE = {
     #  "schedule":datetime.timedelta(hours=1),
     #  }
     }
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    # some other template loaders here...
+)
 
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 
