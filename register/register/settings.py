@@ -33,8 +33,7 @@ ALLOWED_HOSTS = []
 SITE_ID = 1
 PLANET = { "USER_AGENT": "OpenTaba"}
 # Application definition
-
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,16 +41,24 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.admin',
+)
+
+THIRD_PARTY = (
+
     'pagination',
     'tagging',
     'south',
-    'readfeed_app',
-#    'feedme', #doesn't really work
     'djcelery',
-    'django.contrib.admin',
-    'pinax_theme_bootstrap',
-    'planet'
-    )
+    'planet',
+    'pinax_theme_bootstrap', #remove later
+
+)
+
+OUR_APPS = (
+     'readfeed_app',
+)
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + OUR_APPS
   
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
